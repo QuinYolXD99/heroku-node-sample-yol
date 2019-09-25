@@ -56,7 +56,7 @@ io.on('connection', function(socket) {
 
         }
         io.emit("online", activeUsers)
-        io.emit("logout", socket.id)
+            // io.emit("logout", socket.id)
     })
 });
 

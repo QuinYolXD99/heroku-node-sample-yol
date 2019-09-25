@@ -120,16 +120,12 @@ $(document).ready(function() {
         countOnline(data)
     })
 
-    socket.on('logout', function(user) {
-        $('.count').text(Number($('.count').text() - 1))
-        $("." + user + "_class").remove()
-        $("." + user + "_online").remove()
-    })
 
     function addActivity(user, activity) {
         var color = 'green'
         if (activity == 'left') {
             color = 'gray';
+            $("." + user + "_online").remove()
         }
         $('<p>', {
             class: "ui item activity_log"
