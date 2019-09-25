@@ -187,7 +187,7 @@ $(document).ready(function() {
                 if ($('#item-slider').find('.' + user + "_class").length === 0) {
                     // if (!$('#item-slider').has('.' + user + "_class").length) {
                     var chatBox = cloned.replace("Group Chat", user).replace("groupchat-msg", user + "-msg").replace("receiver_gc", "receiver_" + user).replace("template", "").replace("groupmsg", "private_" + user).replace("message-gc", "message-" + user).replace('groupclass', user + "_class")
-                    $(".item-slider").slick('slickAdd', chatBox)
+                    $(".item-slider").append(chatBox)
                     $('<p>', {
                         class: "ui user item "
                     }).append("<i class = 'green user icon'></i>", $("<span>", {
