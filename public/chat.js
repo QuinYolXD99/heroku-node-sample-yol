@@ -122,6 +122,7 @@ $(document).ready(function() {
 
     socket.on('logout', function(user) {
         $('.count').text(Number($('.count').text() - 1))
+        $("." + user + "_class").remove()
         $("." + user + "_online").remove()
     })
 
