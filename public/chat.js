@@ -184,8 +184,8 @@ $(document).ready(function() {
         $('.count').text((data.length - 1))
         data.forEach(user => {
             if (username != user) {
-                if (!$('#item-slider').has('.' + user + "_class").length) {
-                    alert("ALREADYASAASS")
+                if ($('#item-slider').find('.' + user + "_class").length === 0) {
+                    // if (!$('#item-slider').has('.' + user + "_class").length) {
                     var chatBox = cloned.replace("Group Chat", user).replace("groupchat-msg", user + "-msg").replace("receiver_gc", "receiver_" + user).replace("template", "").replace("groupmsg", "private_" + user).replace("message-gc", "message-" + user).replace('groupclass', user + "_class")
                     $(".item-slider").slick('slickAdd', chatBox)
                     $('<p>', {
