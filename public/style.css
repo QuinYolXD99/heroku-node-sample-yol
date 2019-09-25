@@ -41,13 +41,14 @@ ui.segment {
 
 .online-list,
 .activities {
-    height: 520px !important;
+    height: 468px !important;
     overflow-y: auto;
 }
 
 .msg-card,
 .dimmer {
     height: 520px;
+    padding: 12px;
 }
 
 .sidebar {

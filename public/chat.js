@@ -4,6 +4,7 @@ $(document).ready(function() {
     cloned = cloned.replace("template", "")
     $('.reg-btn').attr('disabled', true)
     var username = "anonymous";
+    var chatboxes = []
 
     $("#Myusername").change(function() {
         if ($(this).val() != "") {
@@ -100,7 +101,8 @@ $(document).ready(function() {
         $('.item-slider').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
-            atoplay: false
+            atoplay: false,
+            dots: true
         });
 
         setTimeout(function() {
@@ -178,16 +180,16 @@ $(document).ready(function() {
         }
     }
 
-
     function countOnline(data) {
         $('.online-users').empty();
         $('.count').text((data.length - 1))
         data.forEach(user => {
+            var cl = user + "_class";
             if (username != user) {
-                if ($('#item-slider').find('.' + user + "_class").length === 0) {
-                    // if (!$('#item-slider').has('.' + user + "_class").length) {
-                    var chatBox = cloned.replace("Group Chat", user).replace("groupchat-msg", user + "-msg").replace("receiver_gc", "receiver_" + user).replace("template", "").replace("groupmsg", "private_" + user).replace("message-gc", "message-" + user).replace('groupclass', user + "_class")
-                    $(".item-slider").append(chatBox)
+                if (!chatboxes.includes(user)) {
+                    var chatBox = cloned.replace("Group Chat", user).replace("groupchat-msg", user + "-msg").replace("receiver_gc", "receiver_" + user).replace("template", "").replace("groupmsg", "private_" + user).replace("message-gc", "message-" + user).replace('groupclass', cl)
+                    $(".item-slider").slick('slickAdd', chatBox)
+                    chatboxes.push(user);
                     $('<p>', {
                         class: "ui user item "
                     }).append("<i class = 'green user icon'></i>", $("<span>", {
@@ -197,5 +199,4 @@ $(document).ready(function() {
             }
         });
     }
-
 })
