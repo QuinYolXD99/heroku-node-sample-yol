@@ -16,7 +16,6 @@ io.on('connection', function(socket) {
     socket.on('set-online', function(user) {
         socket.id = user.username;
         activeUsers.push(socket.id)
-        console.log(socket.id + " joined the room")
         socket.broadcast.emit('joined', user.username)
         io.emit("online", activeUsers)
     })

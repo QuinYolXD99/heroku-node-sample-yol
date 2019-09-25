@@ -182,8 +182,8 @@ ui.segment {
     font-family: 'slick';
     font-weight: normal;
     font-style: normal;
-    src: url('https://kenwheeler.github.io/slick/slick/fonts/slick.eot');
-    src: url('https://kenwheeler.github.io/slick/slick/fonts/slick.eot?#iefix') format('embedded-opentype'), url('http://kenwheeler.github.io/slick/slick/fonts/slick.woff') format('woff'), url('http://kenwheeler.github.io/slick/slick/fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
+    src: url('slick.eot');
+    src: url('slick_fixed.eot') format('embedded-opentype'), url('slick.woff') format('woff'), url('slick.ttf') format('truetype'), url("slick.svg") format('svg');
 }
 
 
