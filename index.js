@@ -8,9 +8,7 @@ app.use(express.static('public'))
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
-app.get('/chat', function(req, res) {
-    res.sendFile(__dirname + '/chat.html');
-});
+
 io.on('connection', function(socket) {
 
     socket.on('set-online', function(user) {
@@ -40,19 +38,15 @@ io.on('connection', function(socket) {
         }
     })
 
-
-
     socket.on('message', function(msg) {
         socket.broadcast.emit("broadcastMessage", msg);
     });
 
     socket.on('typing', function(username) {
         socket.broadcast.emit('typing', username)
-
     })
 
     socket.on('disconnect', function(e) {
-        console.log(socket.id + " left the room!")
         for (let i = 0; i < activeUsers.length; i++) {
             if (activeUsers[i] == socket.id) {
                 socket.broadcast.emit('leave', activeUsers[i])
@@ -61,6 +55,7 @@ io.on('connection', function(socket) {
             }
 
         }
+        io.emit("online", activeUsers)
         io.emit("logout", socket.id)
     })
 });

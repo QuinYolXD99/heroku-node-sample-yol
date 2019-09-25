@@ -122,7 +122,6 @@ $(document).ready(function() {
 
     socket.on('logout', function(user) {
         $('.count').text(Number($('.count').text() - 1))
-        $("." + user + "_class").remove()
         $("." + user + "_online").remove()
     })
 
@@ -178,13 +177,13 @@ $(document).ready(function() {
                 marginTop: '10px',
                 maxWidth: "200px",
                 wordWrap: 'break-word'
-            }).text(message.sender + " :  " + message.message), '<br clear="all" />');
+            }).text(message.sender + " : " + message.message), '<br clear="all" />');
         }
     }
 
 
     function countOnline(data) {
-        $('.online-users').empty()
+        $('.online-users').empty();
         $('.count').text((data.length - 1))
         data.forEach(user => {
             if (username != user) {
@@ -192,7 +191,7 @@ $(document).ready(function() {
                     var chatBox = cloned.replace("Group Chat", user).replace("groupchat-msg", user + "-msg").replace("receiver_gc", "receiver_" + user).replace("template", "").replace("groupmsg", "private_" + user).replace("message-gc", "message-" + user).replace('groupclass', user + "_class")
                     $(".item-slider").slick('slickAdd', chatBox)
                     $('<p>', {
-                        class: "ui user item " + user + "_online"
+                        class: "ui user item "
                     }).append("<i class = 'green user icon'></i>", $("<span>", {
                         class: "user-name",
                     }).text(user)).appendTo($('.online-users'))
