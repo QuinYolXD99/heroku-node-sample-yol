@@ -163,24 +163,25 @@ $(document).ready(function() {
     }
 
     function receiveMessage(message) {
-        // console.table(message)
-        var inbox = "";
-        if (message.receiver == 'gc') {
-            inbox += '#groupchat-msg'
-        } else if (message.receiver == username) {
-            inbox += '#' + message.sender + "-msg"
+        if (message.sender != username) {
+            var inbox = "";
+            if (message.receiver == 'gc') {
+                inbox += '#groupchat-msg'
+            } else if (message.receiver == username) {
+                inbox += '#' + message.sender + "-msg"
+            }
+
+            $(inbox).append($('<div>', {
+                class: "ui large left pointing teal  label "
+            }).css({
+                padding: '10px',
+                marginTop: '10px',
+                maxWidth: "200px",
+                wordWrap: 'break-word'
+            }).text(message.sender + " :  " + message.message), '<br clear="all" />');
         }
-
-        $(inbox).append($('<div>', {
-            class: "ui large left pointing teal  label "
-        }).css({
-            padding: '10px',
-            marginTop: '10px',
-            maxWidth: "200px",
-            wordWrap: 'break-word'
-        }).text(message.sender + " :  " + message.message), '<br clear="all" />');
-
     }
+
 
     function countOnline(data) {
         $('.online-users').empty()
