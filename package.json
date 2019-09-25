@@ -4,7 +4,9 @@
     "description": "my first socket.io app",
     "dependencies": {
         "express": "^4.17.1",
-        "socket.io": "^1.7.4"
+        "semantic": "0.0.1",
+        "socket.io": "^1.7.4",
+        "sweetalert2": "^8.17.6"
     },
     "engines": {
         "node": "v10.15.3"
