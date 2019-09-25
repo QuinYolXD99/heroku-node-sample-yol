@@ -16,8 +16,8 @@ io.on('connection', function(socket) {
     socket.on('set-online', function(user) {
         socket.id = user.username;
         activeUsers.push(socket.id)
+        console.log(socket.id + " joined the room")
         socket.broadcast.emit('joined', user.username)
-        console.log(activeUsers)
         io.emit("online", activeUsers)
     })
 
@@ -54,6 +54,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('disconnect', function(e) {
+        console.log(socket.id + " left the room!")
         for (let i = 0; i < activeUsers.length; i++) {
             if (activeUsers[i] == socket.id) {
                 socket.broadcast.emit('leave', activeUsers[i])
